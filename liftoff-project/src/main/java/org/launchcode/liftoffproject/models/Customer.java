@@ -4,27 +4,18 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 
 @Entity
-public class Customer {
+public class Customer extends AbstractEntity {
 
-    private String name;
     private String email;
     private ArrayList<Integer> favoriteVendors;
 
-    public Customer(String name, String email, ArrayList<Integer> favoriteVendors) {
-        this.name = name;
+    public Customer(String email, ArrayList<Integer> favoriteVendors) {
+        super();
         this.email = email;
         this.favoriteVendors = new ArrayList<>();
     }
 
     public Customer() {}
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getEmail() {
         return email;
@@ -40,11 +31,6 @@ public class Customer {
 
     public void setFavoriteVendors(ArrayList<Integer> favoriteVendors) {
         this.favoriteVendors = favoriteVendors;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
 }
