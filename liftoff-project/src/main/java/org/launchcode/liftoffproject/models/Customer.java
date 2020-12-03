@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Customer extends AbstractEntity {
@@ -11,13 +12,11 @@ public class Customer extends AbstractEntity {
     @NotBlank(message = "Please provide a valid email.")
     private Email email;
 
+    private List<Vendor> favoriteVendors = new ArrayList<>();
 
-    private ArrayList<Integer> favoriteVendors;
-
-    public Customer(Email email, ArrayList<Integer> favoriteVendors) {
+    public Customer(Email email) {
         super();
         this.email = email;
-        this.favoriteVendors = new ArrayList<>();
     }
 
     public Customer() {}
@@ -30,12 +29,12 @@ public class Customer extends AbstractEntity {
         this.email = email;
     }
 
-    public ArrayList<Integer> getFavoriteVendors() {
+    public List<Vendor> getFavoriteVendors() {
         return favoriteVendors;
     }
 
-    public void setFavoriteVendors(ArrayList<Integer> favoriteVendors) {
-        this.favoriteVendors = favoriteVendors;
+    public void addVendorToFavorites(Vendor vendor) {
+        favoriteVendors.add(vendor);
     }
 
 }
