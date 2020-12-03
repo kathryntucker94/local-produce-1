@@ -1,13 +1,20 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Product extends AbstractEntity {
 
+    @NotBlank(message = "Please select product type.")
     private String type;
+
+    @Size(max = 500, message = "Product description must not exceed 500 characters.")
     private String description;
     private String photo;
+
+    @NotBlank(message = "Please select whether or not product is organic.")
     private boolean organic;
 
     public Product(String type, String description, String photo, boolean organic) {
