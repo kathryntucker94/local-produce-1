@@ -1,6 +1,8 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -10,22 +12,24 @@ import java.util.List;
 public class Customer extends AbstractEntity {
 
     @NotBlank(message = "Please provide a valid email.")
-    private Email email;
+    @Email
+    private String email;
 
+    @OneToMany(mappedBy = "id")
     private List<Vendor> favoriteVendors = new ArrayList<>();
 
-    public Customer(Email email) {
+    public Customer(String email) {
         super();
         this.email = email;
     }
 
     public Customer() {}
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
