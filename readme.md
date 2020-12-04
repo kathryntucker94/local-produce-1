@@ -1,6 +1,6 @@
 
 ### Overview
-A website to provide users with a "one-stop-shop" for accessing local producers of produce and meat products. Growers/producers can log in, create a highlight page and allow costumers to search for their goods. This will provide a convenient platform for micro-growers and backyard farmers. It will promote a sense of community, bolster the local economy, and reduce the carbon footprint of one's purchases.
+A website to provide users with a "one-stop-shop" for accessing local producers of produce and meat products. Growers/producers can log in, create a highlight page and allow costumers to search for their goods. This will provide a convenient platform for micro-growers and backyard farmers. It will promote a sense of community, bolster the local economy, combat food deserts and reduce the carbon footprint of one's purchases.
 
 ### Features
 
