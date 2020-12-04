@@ -4,21 +4,21 @@ A website to provide users with a "one-stop-shop" for accessing local producers 
 
 ### Features
 
-*User Login- Users can login as either a customer or a supplier.
+* User Login- Users can login as either a customer or a supplier.
 
-*User Roles- Customers will have access to different features than the supplier.
+* User Roles- Customers will have access to different features than the supplier.
 
-*Marketplace - facilitate sales of goods. 
+* Marketplace - facilitate sales of goods. 
 
-*Vendor Rating/Review Option - Let consumers rate their experiences with farmers and possibly allow farmers to rate their experience with the consumer. 
+* Vendor Rating/Review Option - Let consumers rate their experiences with farmers and possibly allow farmers to rate their experience with the consumer. 
 
-*Link to Scheduled Events - Suppliers can link to upcoming events such as farmers markets. 
+* Link to Scheduled Events - Suppliers can link to upcoming events such as farmers markets. 
 
-*About Me/Profile/Bio - Vendors can link to their personal sites and summarize what they do and what they're offering. 
+* About Me/Profile/Bio - Vendors can link to their personal sites and summarize what they do and what they're offering. 
 
-*Media - Vendors can upload photos/descriptions of their available product. 
+* Media - Vendors can upload photos/descriptions of their available product. 
 
-*Search - Users can search for vendors by location, item, vendor, product type, event, farm type.
+* Search - Users can search for vendors by location, item, vendor, product type, event, farm type.
 
 ### Technologies
 -Java
