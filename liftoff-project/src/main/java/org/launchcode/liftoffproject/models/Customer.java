@@ -1,9 +1,6 @@
 package org.launchcode.liftoffproject.models;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -19,6 +16,9 @@ public class Customer extends AbstractEntity {
     @OneToMany
     @JoinColumn
     private List<Vendor> favoriteVendors = new ArrayList<>();
+
+    @OneToOne(mappedBy="customer")
+    private User user;
 
     public Customer(String email) {
         super();

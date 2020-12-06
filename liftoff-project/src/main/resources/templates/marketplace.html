@@ -14,20 +14,20 @@
  <div>
      <h2>Filter By:</h2>
 
-            <label>Vendor Name</label>
-            <select >
-                <option th:each="vendor : ${vendors}" th:href="@{/marketplace(column=vendor,value=${vendor.name})}" th:text="${vendor.name}"></option>
-            </select>
-
-          <label>Product</label>
-            <select >
-                <option th:each="product : ${products}" th:href="@{/marketplace(column=product,value=${product.name})}" th:text="${product.name}"></option>
+        <label>Product</label>
+            <select value="all" >
+                <option th:each="product : ${products}" th:value="product.name" th:text="${product.name}"></option>
             </select>
 
           <label>Location</label>
-            <select>
+            <select value="all">
                 <option th:each="vendor : ${vendors}" th:href="@{/marketplace(column=vendor,value=${vendor.location})}" th:text="${vendor.location}"></option>
             </select>
+
+         <label>Type</label>
+         <select value="all">
+             <option th:each="product : ${products}" th:href="@{/marketplace(column=product,value=${product.type})}" th:text="${product.type}"></option>
+         </select>
       </div>
 
 <div>

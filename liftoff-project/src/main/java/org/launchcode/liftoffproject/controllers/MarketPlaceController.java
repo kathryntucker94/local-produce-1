@@ -1,6 +1,7 @@
 package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.models.Product;
+import org.launchcode.liftoffproject.models.ProductData;
 import org.launchcode.liftoffproject.models.Vendor;
 import org.launchcode.liftoffproject.models.data.ProductRepository;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
@@ -58,7 +59,12 @@ public class MarketPlaceController {
         products = productRepository.findAll();
         vendors = vendorRepository.findAll();
 
+        if(column != null && value !=null){
 
+            products = ProductData.findByColumnAndValue(column, value, productRepository.findAll());
+
+        }
+        model.addAttribute("products", products);
 
         return "marketplace";
     }

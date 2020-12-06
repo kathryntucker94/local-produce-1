@@ -3,10 +3,21 @@ package org.launchcode.liftoffproject.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class User extends AbstractEntity {
+
+        @OneToOne
+        @JoinColumn(name="VENDOR_ID")
+        private Vendor vendor;
+
+        @OneToOne
+        @JoinColumn(name="CUSTOMER_ID")
+        private Customer customer;
 
         @NotNull
         private String username;

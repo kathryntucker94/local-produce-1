@@ -62,4 +62,9 @@ public class Product extends AbstractEntity {
     public void setOrganic(boolean organic) {
         this.organic = organic;
     }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
 }
