@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<!--<head th:replace="fragments :: head">-->
+<!--</head>-->
+<body>
+
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+<div class="container body-content">
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2 class = "centered">View Products</h2>
+</div>
+
+ <div>
+     <h2>Filter By:</h2>
+
+            <label>Vendor Name</label>
+            <select >
+                <option th:each="vendor : ${vendors}" th:href="@{/marketplace(column=vendor,value=${vendor.name})}" th:text="${vendor.name}"></option>
+            </select>
+
+          <label>Product</label>
+            <select >
+                <option th:each="product : ${products}" th:href="@{/marketplace(column=product,value=${product.name})}" th:text="${product.name}"></option>
+            </select>
+
+          <label>Location</label>
+            <select>
+                <option th:each="vendor : ${vendors}" th:href="@{/marketplace(column=vendor,value=${vendor.location})}" th:text="${vendor.location}"></option>
+            </select>
+      </div>
+
+<div>
+
+    <table>
+        <tr th:each="product : ${products}">
+            <td>
+                <p><img th:src="${product.photo}"></p>
+                <p th:text="${product.description}"></p>
+                <p th:text="${product.type}"></p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
@@ -24,8 +25,13 @@ public class Vendor extends AbstractEntity{
     private String photo;
     private double averageRating;
 
-    @ManyToOne
-    private Customer id;
+  @ManyToOne
+  private Customer customer;
+
+  @OneToMany
+  @JoinColumn
+  private List<Product> products = new ArrayList<>();
+
 
     public Vendor(String email, String location, String bio, String photo, double averageRating) {
         super();
