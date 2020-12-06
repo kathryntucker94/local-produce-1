@@ -28,7 +28,7 @@ public class MarketPlaceController {
 
         columnChoices.put("all", "All");
         columnChoices.put("product", "Product");
-        columnChoices.put("skill", "Skill");
+        columnChoices.put("vendor", "Vendor");
 
     }
 

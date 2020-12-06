@@ -31,8 +31,8 @@ public class ProductData {
     public static String getFieldValue(Product product, String fieldName){
         String theValue;
 
-        if (fieldName.equals("name")){
-            theValue = product.getName();
+        if (fieldName.equals("product")){
+            theValue = product.toString();
         } if (fieldName.equals("vendor")){
             theValue = product.getVendor().toString();
         } else{
