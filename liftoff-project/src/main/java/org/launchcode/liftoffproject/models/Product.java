@@ -1,6 +1,7 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -16,6 +17,9 @@ public class Product extends AbstractEntity {
 
     @NotBlank(message = "Please select whether or not product is organic.")
     private boolean organic;
+
+    @ManyToOne
+    private Vendor vendor;
 
     public Product(String type, String description, String photo, boolean organic) {
         super();
@@ -58,4 +62,9 @@ public class Product extends AbstractEntity {
     public void setOrganic(boolean organic) {
         this.organic = organic;
     }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
 }

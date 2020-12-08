@@ -1,15 +1,18 @@
 package org.launchcode.liftoffproject.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Vendor extends AbstractEntity{
 
     @NotBlank(message = "Please provide a valid contact email.")
-    private Email email;
+    @Email
+    private String email;
 
     @NotBlank(message = "Please select a location.")
     private String location;
@@ -19,7 +22,19 @@ public class Vendor extends AbstractEntity{
     private String photo;
     private double averageRating;
 
-    public Vendor(Email email, String location, String bio, String photo, double averageRating) {
+
+    @ManyToOne
+    private Customer customer;
+
+    @OneToMany
+    @JoinColumn
+    private List<Product> products = new ArrayList<>();
+
+    @OneToOne(mappedBy="vendor")
+    private User user;
+
+
+    public Vendor(String email, String location, String bio, String photo, double averageRating) {
         super();
         this.email = email;
         this.location = location;
@@ -30,11 +45,11 @@ public class Vendor extends AbstractEntity{
 
     public Vendor() {}
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
