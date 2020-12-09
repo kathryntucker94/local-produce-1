@@ -21,12 +21,12 @@
 
           <label>Location</label>
             <select value="all">
-                <option th:each="vendor : ${vendors}" th:href="@{/marketplace(column=vendor,value=${vendor.location})}" th:text="${vendor.location}"></option>
+                <option th:each="vendor : ${vendors}" th:value="${vendor.location}" th:text="${vendor.location}"></option>
             </select>
 
          <label>Type</label>
          <select value="all">
-             <option th:each="product : ${products}" th:href="@{/marketplace(column=product,value=${product.type})}" th:text="${product.type}"></option>
+             <option th:each="product : ${products}" th:value= "${product.type}" th:text="${product.type}"></option>
          </select>
       </div>
 

@@ -51,7 +51,7 @@ public class MarketPlaceController {
     }
 
     @RequestMapping(value = "products")
-    public String listProductsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+    public String listProductsByValue(Model model, @RequestParam String value) {
         Iterable<Product> products;
         Iterable<Vendor> vendors;
 
@@ -59,14 +59,14 @@ public class MarketPlaceController {
         products = productRepository.findAll();
         vendors = vendorRepository.findAll();
 
-        if(column != null && value !=null){
+        if(value !=null){
 
-            products = ProductData.findByColumnAndValue(column, value, productRepository.findAll());
+            products = ProductData.findByValue( value, productRepository.findAll());
 
         }
         model.addAttribute("products", products);
 
-        return "marketplace";
+        return "marketplace-list";
     }
 
 }
