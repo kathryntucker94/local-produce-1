@@ -1,36 +1,33 @@
 package org.launchcode.liftoffproject.controllers;
 
+import com.mysql.cj.xdevapi.Collection;
 import org.launchcode.liftoffproject.models.Product;
 import org.launchcode.liftoffproject.models.ProductData;
+import org.launchcode.liftoffproject.models.Utility;
 import org.launchcode.liftoffproject.models.Vendor;
 import org.launchcode.liftoffproject.models.data.ProductRepository;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequestMapping("marketplace")
 public class MarketPlaceController {
 
+    Utility utility = new Utility();
+
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     private VendorRepository vendorRepository;
-
-    static HashMap<String, String> columnChoices = new HashMap<>();
-
-    public MarketPlaceController () {
-
-        columnChoices.put("all", "All");
-        columnChoices.put("product", "Product");
-        columnChoices.put("vendor", "Vendor");
-
-    }
 
 
     @RequestMapping("")
@@ -38,10 +35,8 @@ public class MarketPlaceController {
         Iterable<Product> products;
         Iterable<Vendor> vendors;
 
-
         products = productRepository.findAll();
         vendors = vendorRepository.findAll();
-
 
         model.addAttribute("products", products);
         model.addAttribute("vendors", vendors);
@@ -50,7 +45,7 @@ public class MarketPlaceController {
         return "marketplace";
     }
 
-    @RequestMapping(value = "products")
+    @PostMapping("results")
     public String listProductsByValue(Model model, @RequestParam String value) {
         Iterable<Product> products;
         Iterable<Vendor> vendors;
@@ -59,6 +54,8 @@ public class MarketPlaceController {
         products = productRepository.findAll();
         vendors = vendorRepository.findAll();
 
+
+
         if(value !=null){
 
             products = ProductData.findByValue( value, productRepository.findAll());
@@ -66,7 +63,7 @@ public class MarketPlaceController {
         }
         model.addAttribute("products", products);
 
-        return "marketplace-list";
+        return "marketplace";
     }
 
 }
