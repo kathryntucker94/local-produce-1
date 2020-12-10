@@ -40,10 +40,11 @@ public class ProductData {
                 results.add(product);
             } else if (product.getDescription().toLowerCase().contains(lower_val)) {
                 results.add(product);
-            } else if (product.getVendor().getLocation().toString().toLowerCase().contains(lower_val)) {
+            } else if (product.getVendor().getLocation().toLowerCase().contains(lower_val)) {
+                results.add(product);
+            }else if (product.getVendor().getName().toLowerCase().contains(lower_val)) {
                 results.add(product);
             }
-
         }
 
         return results;
