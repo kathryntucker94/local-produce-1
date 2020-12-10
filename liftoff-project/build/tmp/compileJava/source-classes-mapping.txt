@@ -2,8 +2,8 @@ org/launchcode/liftoffproject/controllers/AuthenticationController.java
  org.launchcode.liftoffproject.controllers.AuthenticationController
 org/launchcode/liftoffproject/controllers/HomeController.java
  org.launchcode.liftoffproject.controllers.HomeController
-org/launchcode/liftoffproject/controllers/ProductController.java
- org.launchcode.liftoffproject.controllers.ProductController
+org/launchcode/liftoffproject/controllers/MarketPlaceController.java
+ org.launchcode.liftoffproject.controllers.MarketPlaceController
 org/launchcode/liftoffproject/models/Product.java
  org.launchcode.liftoffproject.models.Product
 org/launchcode/liftoffproject/controllers/VendorController.java
@@ -26,6 +26,8 @@ org/launchcode/liftoffproject/LiftoffProjectApplication.java
  org.launchcode.liftoffproject.LiftoffProjectApplication
 org/launchcode/liftoffproject/models/data/VendorRepository.java
  org.launchcode.liftoffproject.models.data.VendorRepository
+org/launchcode/liftoffproject/controllers/ProductController.java
+ org.launchcode.liftoffproject.controllers.ProductController
 org/launchcode/liftoffproject/models/Utility.java
  org.launchcode.liftoffproject.models.Utility
 org/launchcode/liftoffproject/models/dto/RegisterFormDTO.java
@@ -34,9 +36,7 @@ org/launchcode/liftoffproject/models/AbstractEntity.java
  org.launchcode.liftoffproject.models.AbstractEntity
 org/launchcode/liftoffproject/models/dto/LoginFormDTO.java
  org.launchcode.liftoffproject.models.dto.LoginFormDTO
-org/launchcode/liftoffproject/models/data/ProductRepository.java
- org.launchcode.liftoffproject.models.data.ProductRepository
-org/launchcode/liftoffproject/controllers/MarketPlaceController.java
- org.launchcode.liftoffproject.controllers.MarketPlaceController
 org/launchcode/liftoffproject/models/ProductData.java
  org.launchcode.liftoffproject.models.ProductData
+org/launchcode/liftoffproject/models/data/ProductRepository.java
+ org.launchcode.liftoffproject.models.data.ProductRepository
