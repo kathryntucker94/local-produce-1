@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <title th:text = ${title}>Title</title>
+</head>
+
+<body class="container">
+<div>
+    <div th:replace="fragments :: navigation"></div>
+</div>
+
+<body>
+<form th:action="@{/marketplace/results}" method = "post">
+    <h2>Filter by:</h2>
+
+    <p>
+        <label for="value">Keyword:</label>
+        <input type="text" name="value" id="value" />
+    </p>
+
+    <input type="submit" value="Search" />
+</form>
+<div class="container">
+    <h1>Marketplace</h1>
+    <div class="row col-md-7 table-responsive">
+        <table id="customerTable" class="table">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Organic</th>
+                <th>Location</th>
+                <th>Vendor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product, rowStat: ${products}"
+                th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:src="${product.photo}"></td>
+                <td>
+                    <span th:if="${product.organic == true}">Organic</span>
+                    <span th:unless="${product.organic == true}">Non-Organic</span>
+                </td>
+                <td th:text="${product.vendor.location}"></td>
+                <td th:text="${product.vendor.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

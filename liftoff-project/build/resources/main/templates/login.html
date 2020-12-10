@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<!--<head th:replace="fragments :: head"></head>-->
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <title th:text = ${title}>Title</title>
+</head>
+
 <body class="container">
+<div>
+    <div th:replace="fragments :: navigation"></div>
+</div>
 
-<!--<header th:replace="fragments :: header"></header>-->
+<section class="container-fluid bg">
+    <section class="row justify-content-center">
+        <section class="col-4">
+            <form method="post" class="form-container">
+                <div class="form-group">
+                    <label th:for="username">Username
+                        <input class="form-control" th:field="${loginFormDTO.username}">
+                    </label>
+                    <p class="error" th:errors="${loginFormDTO.username}"></p>
+                </div>
+                <div class="form-group">
+                    <label>Password
+                        <input class="form-control" th:field="${loginFormDTO.password}" type="password">
+                    </label>
+                    <p class="error" th:errors="${loginFormDTO.password}"></p>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <br>
+                <p><small>Don't have an account? <a th:href="@{register}">Register for one.</a></small></p>
+            </form>
 
-<form method="post">
-    <div class="form-group">
-        <label th:for="username">Username
-            <input class="form-control" th:field="${loginFormDTO.username}">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.username}"></p>
-    </div>
-    <div class="form-group">
-        <label>Password
-            <input class="form-control" th:field="${loginFormDTO.password}" type="password">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
-    </div>
-
-    <input type="submit" class="btn btn-primary" value="Log In" />
-</form>
-
-<p>Don't have an account? <a href="/register">Register for one.</a></p>
+        </section>
+    </section>
+</section>
 
 </body>
+
+<!-- Script Source Files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </html>
