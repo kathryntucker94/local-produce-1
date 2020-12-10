@@ -1,6 +1,5 @@
 package org.launchcode.liftoffproject.controllers;
 
-
 import org.launchcode.liftoffproject.models.Vendor;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,48 +13,49 @@ import javax.validation.Valid;
 
 
 @Controller
+@RequestMapping("profile")
 public class VendorController {
 
     @Autowired
     private VendorRepository vendorRepository;
 
-    @GetMapping("vendor/create")
+    @GetMapping("create")
     public String displayCreateProfileForm(Model model) {
         model.addAttribute("title", "Create Profile");
         model.addAttribute(new Vendor());
-        return "vendors/edit";
+        return "edit";
     }
 
-    @PostMapping("vendor/create")
+    @PostMapping("create")
     public String processCreateProfileForm(@ModelAttribute @Valid Vendor vendor, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Profile");
-            return "vendors/edit";
+            return "edit";
         }
 
         vendorRepository.save(vendor);
-        return "vendors/profile";
+        return "profile";
     }
 
-    @GetMapping("vendor/edit")
+    @GetMapping("edit")
     public String displayEditProfileForm(Model model, Vendor vendor) {
         model.addAttribute("title", "Edit Profile");
         model.addAttribute("vendor", vendor);
-        return "vendors/edit";
+        return "edit";
     }
 
-    @PostMapping("vendor/edit")
+    @PostMapping("edit")
     public String processEditProfileForm(@ModelAttribute Vendor vendor, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Edit Profile");
-            return "vendors/edit";
+            return "edit";
         }
 
 
 
-        return "vendors/profile";
+        return "profile";
     }
 
 
