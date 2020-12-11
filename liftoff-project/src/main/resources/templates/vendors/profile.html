@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<!-- Vendor's info section -->
+<div id="info">
+    <!-- profile photo -->
+    <!-- provide default photo if null -->
+
+    <h1 th:text="${vendor.name}"></h1>
+    <h1 th:text="${vendor.id}"></h1>
+    <h2 th:text="'Location: ' + ${vendor.location}"></h2>
+
+    <!-- Bio -->
+    <p id="bio" th:text="'About Me: ' + ${vendor.bio}" th:if="${!#strings.isEmpty(vendor.bio)}" ></p>
+
+    <p th:text="'Email: ' + ${vendor.email}"></p>
+
+    <!-- Button to visit vendor's website -->
+    <!-- Validate -->
+    <a th:href="@{|${vendor.website}|}"><button th:if="${!#strings.isEmpty(vendor.website)}" id="websiteBtn">Visit Vendor's Website</button></a>
+
+    <p th:text="${vendor.averageRating} + '/5'"></p>
+
+    <!-- put edit button here -->
+    <a th:href="@{/vendors/edit}"><button type="button" id="editProfileBtn">Edit Profile</button></a>
+</div>
+
+<!-- display product listings here -->
+<div id="products">
+    <a th:href="@{/products/add}"><button type="button" id="addProductBtn">Add Product</button></a>
+</div>
+
+<!-- display tags here -->
+<div id="tags">
+    <a th:href="@{/tags/add}"><button type="button" id="addTagBtn">New Tag</button></a>
+</div>
+
+<!-- display images here -->
+<div id="images"></div>
+
+</body>
+</html>

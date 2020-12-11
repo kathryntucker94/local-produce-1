@@ -1,0 +1,146 @@
+/*============= RESET STYLE =============
+
+/*-- iPhone X Remove Gutters
+Ignore W3C Validation error for this style. --*/
+
+
+
+html {
+   padding: env(safe-area-inset);
+}
+
+/*-- Body Resets --*/
+body {
+   font-family: 'Lato', sans-serif;
+   color: #505962;
+}
+
+/*============= NAVIGATION =============*/
+.navbar-brand {
+    height: 2rem;
+}
+
+.navbar-brand img {
+    height: 2rem;
+}
+
+.navbar-dark {
+    padding: 0.6rem;
+    font-size: .9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.navbar-nav {
+    padding-right: 2rem;
+}
+
+.navbar-nav li {
+    padding-right: 0.8rem;
+}
+
+.navbar-nav .nav-link {
+    padding-top: 0.8rem;
+    color: black!important;
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    color: white!important;
+}
+
+/*============= LANDING PAGE =============*/
+.landing{
+    height: 90vh;
+}
+
+.home-inner{
+    background-image: url("../img/header2.png");
+    background-repeat: no-repeat;
+    text-align: center;
+}
+/*============= ABOUT SECTION =============*/
+#about {
+    height: 20vh;
+}
+
+#littleCalendar {
+ height:5rem;
+}
+
+/*============= LOGIN PAGE / FORM =============*/
+.bg {
+    width: 100%;
+    height: 100vh;
+    background-size: 100%;
+}
+
+.form-container {
+    position:absolute;
+    top: 20vh;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+/*============= TESTIMONIALS SECTION =============*/
+
+
+
+/*============= CONTACT SECTION =============*/
+
+
+
+/*============= MEDIA QUERIES =============*/
+
+/* Medium (md) devices (tablets, 768px and under) */
+@media (max-width: 767.98px) {
+
+}
+
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/
+
+/*-- Fixed Landing Page Section --*/
+.landing {
+   position: relative;
+   width: 100%;
+   display: table;
+   z-index: -1;
+}
+.home-wrap {
+   clip: rect(0, auto, auto, 0);
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+.home-inner {
+   display: table;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-size: 100%;
+   background-position: center center;
+   transform: translateZ(0);
+   -webkit-transform: translateZ(0);
+   will-change: transform;
+}
