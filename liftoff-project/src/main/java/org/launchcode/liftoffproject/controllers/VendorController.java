@@ -4,58 +4,55 @@ import org.launchcode.liftoffproject.models.Vendor;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("profile")
 public class VendorController {
 
     @Autowired
     private VendorRepository vendorRepository;
 
-    @GetMapping("create")
+    @GetMapping("vendor/create")
     public String displayCreateProfileForm(Model model) {
         model.addAttribute("title", "Create Profile");
         model.addAttribute(new Vendor());
-        return "edit";
+        return "vendors/edit";
     }
 
-    @PostMapping("create")
+    @PostMapping("vendor/create")
     public String processCreateProfileForm(@ModelAttribute @Valid Vendor vendor, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Profile");
-            return "edit";
+            return "vendors/edit";
         }
 
         vendorRepository.save(vendor);
-        return "profile";
+        return "vendors/profile";
     }
 
-    @GetMapping("edit")
+    @GetMapping("vendor/edit")
     public String displayEditProfileForm(Model model, Vendor vendor) {
         model.addAttribute("title", "Edit Profile");
         model.addAttribute("vendor", vendor);
-        return "edit";
+        return "vendors/edit";
     }
 
-    @PostMapping("edit")
+    @PostMapping("vendor/edit")
     public String processEditProfileForm(@ModelAttribute Vendor vendor, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Edit Profile");
-            return "edit";
+            return "vendors/edit";
         }
 
 
 
-        return "profile";
+        return "vendors/profile";
     }
 
 
