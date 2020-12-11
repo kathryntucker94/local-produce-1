@@ -50,8 +50,6 @@ public class VendorController {
             return "vendors/edit";
         }
 
-
-
         return "vendors/profile";
     }
 

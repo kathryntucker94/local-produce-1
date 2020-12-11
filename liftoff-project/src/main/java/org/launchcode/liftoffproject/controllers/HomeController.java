@@ -35,14 +35,14 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("profile/{vendorId}")
+    @GetMapping("vendor/{vendorName}")
     public String displayVendor(Model model, @PathVariable int vendorId) {
 
         Optional<Vendor> optionalVendor = vendorRepository.findById(vendorId);
         if (optionalVendor.isPresent()) {
             Vendor vendor = (Vendor) optionalVendor.get();
             model.addAttribute("vendor", vendor);
-            return "profile";
+            return "vendors/profile";
         } else {
             return "redirect:../";
         }
