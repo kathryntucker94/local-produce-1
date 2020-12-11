@@ -35,7 +35,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("vendor/{vendorName}")
+    @GetMapping("vendor/{vendorId}")
     public String displayVendor(Model model, @PathVariable int vendorId) {
 
         Optional<Vendor> optionalVendor = vendorRepository.findById(vendorId);
