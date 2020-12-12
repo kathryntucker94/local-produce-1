@@ -16,15 +16,16 @@ public class Vendor extends AbstractEntity{
     private String bio;
     private String photo;
     private double averageRating;
-
     private String website;
 
     @ManyToOne
     private Customer customer;
+
     @OneToMany
     @JoinColumn
     private List<Product> products = new ArrayList<>();
-    @OneToOne(mappedBy="vendor")
+
+    @OneToOne(mappedBy = "vendor")
     private User user;
 
     public Vendor(String email, String location, String bio, String photo, double averageRating, String website) {
@@ -35,6 +36,38 @@ public class Vendor extends AbstractEntity{
         this.photo = photo;
         this.averageRating = averageRating;
         this.website = website;
+    }
+    public Vendor(String email, String location, String bio, String photo, String website) {
+        super();
+        this.email = email;
+        this.location = location;
+        this.bio = bio;
+        this.photo = photo;
+        this.website = website;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Vendor() {}
@@ -68,11 +101,9 @@ public class Vendor extends AbstractEntity{
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
     }
-
     public String getWebsite() {
         return website;
     }
-
     public void setWebsite(String website) {
         this.website = website;
     }

@@ -2,17 +2,19 @@ package org.launchcode.liftoffproject.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class User extends AbstractEntity {
+public class User  {
+
+
+    @Id
+    @GeneratedValue
+    private int id;
 
         @OneToOne
-        @JoinColumn(name="VENDOR_ID")
+        @JoinColumn(name = "vendor_id")
         private Vendor vendor;
 
         @OneToOne
@@ -43,5 +45,27 @@ public class User extends AbstractEntity {
         return encoder.matches(password, pwHash);
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
