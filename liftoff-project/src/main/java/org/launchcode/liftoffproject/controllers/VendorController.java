@@ -88,6 +88,18 @@ public class VendorController {
         return "vendors/profile";
     }
 
+//    Path to view a vendor's profile by vendor Id.
+    @GetMapping("vendor/profile/{vendorId}")
+    public String displayViewVendor(Model model, @PathVariable int vendorId) {
+
+        Optional vendor = vendorRepository.findById(vendorId);
+        Vendor vendorObject = (Vendor) vendor.get();
+
+        model.addAttribute("vendor", vendorObject);
+
+        return "vendors/profile";
+    }
+
 
 
 }
