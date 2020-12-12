@@ -25,8 +25,7 @@ public class Vendor extends AbstractEntity{
     @JoinColumn
     private List<Product> products = new ArrayList<>();
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "vendor")
     private User user;
 
     public Vendor(String email, String location, String bio, String photo, double averageRating, String website) {

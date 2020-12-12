@@ -13,7 +13,8 @@ public class User  {
     @GeneratedValue
     private int id;
 
-        @OneToOne(mappedBy = "user")
+        @OneToOne
+        @JoinColumn(name = "vendor_id")
         private Vendor vendor;
 
         @OneToOne
@@ -46,5 +47,25 @@ public class User  {
 
     public int getId() {
         return id;
+    }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
