@@ -2,46 +2,77 @@ package org.launchcode.liftoffproject.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
-public class User extends AbstractEntity {
+public class User {
 
-        @OneToOne
-        @JoinColumn(name="VENDOR_ID")
-        private Vendor vendor;
+    @Id
+    @GeneratedValue
+    private int id;
 
-        @OneToOne
-        @JoinColumn(name="CUSTOMER_ID")
-        private Customer customer;
+    @OneToOne(mappedBy="user")
+    private Vendor vendor;
 
-        @NotNull
-        private String username;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn
+//    private Customer customer;
 
-        @NotNull
-        private String pwHash;
+    @NotNull
+    private String username;
 
-        private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @NotNull
+    private String pwHash;
 
-        public User() {}
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        public User(String username, String password) {
-            this.username = username;
-            this.pwHash = encoder.encode(password);
-        }
+    public User() {}
 
-        public String getUsername() {
+    public User(String username, String password) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
             return username;
         }
-
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
 
+    public Vendor getVendor() {
+        return vendor;
+    }
 
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
+    }
+
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

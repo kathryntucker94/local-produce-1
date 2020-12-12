@@ -6,14 +6,18 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
-public class Vendor extends AbstractEntity{
+public class Vendor extends AbstractEntity {
+
     @NotBlank(message = "Please provide a valid contact email.")
     @Email
     private String email;
+
     @NotBlank(message = "Please select a location.")
     private String location;
+
     @Size(max = 500, message = "Cannot exceed 500 characters.")
     private String bio;
+
     private String photo;
     private double averageRating;
     private String website;
@@ -25,7 +29,8 @@ public class Vendor extends AbstractEntity{
     @JoinColumn
     private List<Product> products = new ArrayList<>();
 
-    @OneToOne(mappedBy="vendor")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="id")
     private User user;
 
     public Vendor(String email, String location, String bio, String photo, double averageRating, String website) {
@@ -39,6 +44,7 @@ public class Vendor extends AbstractEntity{
     }
 
     public Vendor() {}
+
     public String getEmail() {
         return email;
     }
@@ -74,5 +80,16 @@ public class Vendor extends AbstractEntity{
     }
     public void setWebsite(String website) {
         this.website = website;
+    }
+    public String getUsername(User user) {
+        return user.getUsername();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
