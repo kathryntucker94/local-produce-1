@@ -50,7 +50,7 @@ body {
 
 /*============= LANDING PAGE =============*/
 .landing{
-    height: 90vh;
+    height: 50vh;
 }
 
 .home-inner{
@@ -60,8 +60,13 @@ body {
 }
 /*============= ABOUT SECTION =============*/
 #about {
-    height: 20vh;
+/*    height: 20vh; */
+    background-color: #9BEBC1;
+    text-align: left;
+    font-family: 'Lato', sans-serif;
 }
+
+
 
 #littleCalendar {
  height:5rem;
