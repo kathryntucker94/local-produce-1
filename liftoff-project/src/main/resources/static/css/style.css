@@ -83,8 +83,13 @@ body {
     box-shadow: 0px 0px 10px 0px #000;
 }
 
-/*============= TESTIMONIALS SECTION =============*/
-
+/*============= VENDOR PROFILE =============*/
+#profile-img {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 150px;
+}
 
 
 /*============= CONTACT SECTION =============*/
