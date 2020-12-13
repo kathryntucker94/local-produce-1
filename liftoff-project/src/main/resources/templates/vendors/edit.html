@@ -11,17 +11,17 @@
 <form method="post">
     <div class="form-group">
         <label th:for="photo">Profile Photo:</label>
-        <input class="form-control" th:field="${vendor.photo}" th:text="${vendor.getPhoto()}"/>
+        <input class="form-control" th:field="${vendor.photo}" th:value="${vendor.getPhoto()}"/>
         <span th:errors="${vendor.photo}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="name">Name:</label>
-        <input class="form-control" th:field="${vendor.name}" th:text="${vendor.name}"/>
+        <input class="form-control" th:field="${vendor.name}" th:value="${vendor.name}"/>
         <span th:errors="${vendor.name}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="email">Contact Email:</label>
-        <input class="form-control" th:field="${vendor.email}" th:text="${vendor.email}"/>
+        <input class="form-control" th:field="${vendor.email}" th:value="${vendor.email}"/>
         <span th:errors="${vendor.email}" class="error"></span>
     </div>
     <div class="form-group">
@@ -47,12 +47,12 @@
     </div>
     <div class="form-group">
         <label th:for="bio">Bio:</label>
-        <input class="form-control" th:field="${vendor.bio}" th:text="${vendor.bio}"/>
+        <input class="form-control" th:field="${vendor.bio}" th:value="${vendor.bio}"/>
         <span th:errors="${vendor.bio}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="website">Website (please paste the entire URL):</label>
-        <input class="form-control" th:field="${vendor.website}" th:text="${vendor.website}"/>
+        <input class="form-control" th:field="${vendor.website}" th:value="${vendor.website}"/>
         <span th:errors="${vendor.website}" class="error"></span>
     </div>
     <input type="submit" value="Submit"/>
