@@ -115,10 +115,12 @@ public class AuthenticationController {
             return "login";
         }
 
-        setUserInSession(request.getSession(), theUser);
-
+        HttpSession session = request.getSession(true);
+        System.out.println(session);
+        setUserInSession(session, theUser);
         return "redirect:";
     }
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();

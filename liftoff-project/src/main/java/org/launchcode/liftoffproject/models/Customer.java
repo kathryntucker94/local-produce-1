@@ -17,8 +17,8 @@ public class Customer extends AbstractEntity {
     @JoinColumn
     private List<Vendor> favoriteVendors = new ArrayList<>();
 
-    @OneToOne(mappedBy="customer")
-    private User user;
+//    @OneToOne(mappedBy="customer")
+//    private User user;
 
     public Customer(String email) {
         super();
@@ -41,6 +41,10 @@ public class Customer extends AbstractEntity {
 
     public void addVendorToFavorites(Vendor vendor) {
         favoriteVendors.add(vendor);
+    }
+
+    public String getUsername(User user) {
+        return user.getUsername();
     }
 
 }
