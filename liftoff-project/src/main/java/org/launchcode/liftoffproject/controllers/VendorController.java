@@ -1,7 +1,5 @@
 package org.launchcode.liftoffproject.controllers;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-import org.hibernate.Session;
 import org.launchcode.liftoffproject.models.User;
 import org.launchcode.liftoffproject.models.Vendor;
 import org.launchcode.liftoffproject.models.data.UserRepository;
@@ -85,6 +83,7 @@ public class VendorController {
             return "vendors/edit";
         }
 
+
         return "vendors/profile";
     }
 
@@ -100,6 +99,26 @@ public class VendorController {
         return "vendors/profile";
     }
 
+    @GetMapping("vendor/profile")
+    public String displayMyVendorProfile(Model model, HttpServletRequest request) {
 
+        //Get user from session
+        HttpSession session = request.getSession(false);
+        User user = getUserFromSession(session);
+
+        //get vendor from session user and redirect to their profile
+        if (user.getVendor() != null) {
+            Vendor vendor = user.getVendor();
+            model.addAttribute("vendor", vendor);
+            return "vendors/profile";
+        } else {
+            //if user is not linked to a vendor yet, send to create profile and link to session user
+            model.addAttribute("title", "Create Profile");
+            model.addAttribute(new Vendor());
+            return "redirect:/vendor/create";
+        }
+
+
+    }
 
 }
