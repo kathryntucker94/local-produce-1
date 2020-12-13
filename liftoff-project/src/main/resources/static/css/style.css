@@ -59,14 +59,36 @@ body {
     text-align: center;
 }
 /*============= ABOUT SECTION =============*/
-#about {
+#about-container {
 /*    height: 20vh; */
-    background-color: #9BEBC1;
-    text-align: left;
-    font-family: 'Lato', sans-serif;
+
+    margin:15px;
+    background-color: #C6F3AC;
+    overflow: hidden;
 }
 
+.heading{
+text-align: center;
+}
 
+.aboutustext{
+text-align: center;
+margin-left: 30px;
+margin-right: 100px;
+font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#aboutusimg{
+float: right;
+background-color: grey;
+margin-right: 100px;
+margin-left: 50px
+display: block;
+}
+
+/*#content-container{
+float: left
+}*/
 
 #littleCalendar {
  height:5rem;
@@ -104,10 +126,10 @@ body {
 /*============= MEDIA QUERIES =============*/
 
 /* Medium (md) devices (tablets, 768px and under) */
-@media (max-width: 767.98px) {
+/*@media (max-width: 767.98px) {
 
 }
-
+*/
 /*============ BOOTSTRAP BREAK POINTS:
 
 Extra small (xs) devices (portrait phones, less than 576px)
