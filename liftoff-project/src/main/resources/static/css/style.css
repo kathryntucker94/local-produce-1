@@ -61,9 +61,8 @@ body {
 /*============= ABOUT SECTION =============*/
 #about-container {
 /*    height: 20vh; */
-
-    margin:15px;
-    background-color: #C6F3AC;
+   margin-bottom: 100px;
+    background-color: #eaffb8;
     overflow: hidden;
 }
 
@@ -72,17 +71,20 @@ text-align: center;
 }
 
 .aboutustext{
-text-align: center;
-margin-left: 30px;
-margin-right: 100px;
+text-align: left
+margin-left: 100px;
+margin-right: 300px;
 font-family: "Lucida Console", "Courier New", monospace;
 }
 
 #aboutusimg{
+  max-width:20%;
+  max-height:20%;
+ border-radius: 25px;
 float: right;
-background-color: grey;
 margin-right: 100px;
-margin-left: 50px
+margin-left: 300px
+margin-bottom: 100px;
 display: block;
 }
 
@@ -126,10 +128,10 @@ float: left
 /*============= MEDIA QUERIES =============*/
 
 /* Medium (md) devices (tablets, 768px and under) */
-/*@media (max-width: 767.98px) {
+@media (max-width: 767.98px) {
 
 }
-*/
+
 /*============ BOOTSTRAP BREAK POINTS:
 
 Extra small (xs) devices (portrait phones, less than 576px)
@@ -176,3 +178,4 @@ Extra (xl) large devices (large desktops, 1200px and up)
    -webkit-transform: translateZ(0);
    will-change: transform;
 }
+/* image carousel */
