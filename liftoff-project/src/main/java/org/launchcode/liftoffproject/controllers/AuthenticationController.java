@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -53,7 +54,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
-                                          Errors errors, HttpServletRequest request,
+                                          @RequestParam boolean isVendor, Errors errors, HttpServletRequest request,
                                           Model model) {
 
         if (errors.hasErrors()) {
@@ -77,7 +78,7 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.isVendor());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
