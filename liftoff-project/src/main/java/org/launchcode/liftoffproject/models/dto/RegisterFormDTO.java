@@ -1,6 +1,10 @@
 package org.launchcode.liftoffproject.models.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class RegisterFormDTO extends LoginFormDTO {
+
+    private String userRole;
 
     private String verifyPassword;
 
@@ -12,4 +16,11 @@ public class RegisterFormDTO extends LoginFormDTO {
         this.verifyPassword = verifyPassword;
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
 }

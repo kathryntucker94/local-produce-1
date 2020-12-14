@@ -7,19 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Vendor extends AbstractEntity{
+
     @NotBlank(message = "Please provide a valid contact email.")
     @Email
     private String email;
+
     @NotBlank(message = "Please select a location.")
     private String location;
+
     @Size(max = 500, message = "Cannot exceed 500 characters.")
     private String bio;
+
     private String photo;
     private double averageRating;
     private String website;
-
-    @ManyToOne
-    private Customer customer;
 
     @OneToMany
     @JoinColumn
@@ -37,21 +38,55 @@ public class Vendor extends AbstractEntity{
         this.averageRating = averageRating;
         this.website = website;
     }
-    public Vendor(String email, String location, String bio, String photo, String website) {
-        super();
+
+    public Vendor() {}
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
         this.website = website;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public List<Product> getProducts() {
@@ -68,43 +103,5 @@ public class Vendor extends AbstractEntity{
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Vendor() {}
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getLocation() {
-        return location;
-    }
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    public String getBio() {
-        return bio;
-    }
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-    public String getPhoto() {
-        return photo;
-    }
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-    public double getAverageRating() {
-        return averageRating;
-    }
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
-    }
-    public String getWebsite() {
-        return website;
-    }
-    public void setWebsite(String website) {
-        this.website = website;
     }
 }
