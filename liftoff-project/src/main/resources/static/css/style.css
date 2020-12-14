@@ -50,7 +50,7 @@ body {
 
 /*============= LANDING PAGE =============*/
 .landing{
-    height: 90vh;
+    height: 50vh;
 }
 
 .home-inner{
@@ -59,13 +59,49 @@ body {
     text-align: center;
 }
 /*============= ABOUT SECTION =============*/
-#about {
-    height: 20vh;
+#about-container {
+/*    height: 20vh; */
+
+border-radius: 10px;
+box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+margin: 0 50px 100px 50px;
+ background-color: #b1b180;
+overflow: hidden;
 }
 
-#littleCalendar {
- height:5rem;
+.heading{
+color: #6e634c;
+text-align: center;
+font-size:45px;
+color: white;
+font-weight: bold, italic;
+padding: 10px;
 }
+
+.aboutustext{
+font-size:18px;
+color: #6e634c;
+padding-bottom: 12px;
+padding-left:100px;
+padding-right: 500px;
+margin: 0px ;
+
+font-family: "Lucida Console", "Courier New", monospace;
+}
+
+#aboutusimg{
+ max-width:30%;
+ max-height:30%;
+ padding:20px 70px 50px 20px;
+border-radius: 25px;
+float: right;
+display: block;
+}
+
+/*#content-container{
+float: left
+}*/
+
 
 /*============= LOGIN PAGE / FORM =============*/
 .bg {
@@ -148,4 +184,26 @@ Extra (xl) large devices (large desktops, 1200px and up)
    transform: translateZ(0);
    -webkit-transform: translateZ(0);
    will-change: transform;
+}
+/* image carousel */
+#user-spotlight-container{
+margin: 0px 50px 150px 50px;
+}
+
+.user-spotlight-header{
+
+}
+
+.row{
+
+}
+.btn-primary{
+background-color: #b1b180;
+border: none;
+}
+.btn-primary:hover{
+  box-shadow: 0 05px 10px 0 rgba(0,0,0,0.24),0 12px 25px 0 rgba(0,0,0,0.19);
+  background-color: #ccd59a;
+  border: none;
+
 }
