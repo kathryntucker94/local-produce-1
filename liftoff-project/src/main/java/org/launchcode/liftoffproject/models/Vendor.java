@@ -38,14 +38,6 @@ public class Vendor extends AbstractEntity{
         this.averageRating = averageRating;
         this.website = website;
     }
-    public Vendor(String email, String location, String bio, String photo, String website) {
-        super();
-        this.email = email;
-        this.location = location;
-        this.bio = bio;
-        this.photo = photo;
-        this.website = website;
-    }
 
     public Vendor() {}
 
