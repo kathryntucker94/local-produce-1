@@ -8,11 +8,13 @@ public class ProductData {
     public static String getFieldValue(Product product, String fieldName){
         String theValue;
 
-        if (fieldName.equals("product")){
-            theValue = product.toString();
+        if (fieldName.equals("type")){
+            theValue = product.getType();
         } if (fieldName.equals("vendor")){
             theValue = product.getVendor().toString();
-        } else{
+        } if (fieldName.equals("location")) {
+            theValue = product.getVendor().getName();
+        }else{
             theValue = product.toString();
         }
 
@@ -50,4 +52,26 @@ public class ProductData {
         return results;
     }
 
+    public static ArrayList<Product> findByColumnAndValue(String column, String value, Iterable<Product> allProducts) {
+        ArrayList<Product> results = new ArrayList<>();
+
+        if (value.toLowerCase().equals("all")){
+            return (ArrayList<Product>) allProducts;
+        }
+
+        if (column.equals("all")){
+            results = findByValue(value, allProducts);
+            return results;
+        }
+        for (Product product : allProducts) {
+
+            String aValue = getFieldValue(product, column);
+
+            if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+                results.add(product);
+            }
+        }
+
+        return results;
+    }
 }

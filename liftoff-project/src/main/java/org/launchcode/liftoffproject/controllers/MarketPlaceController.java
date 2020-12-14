@@ -13,11 +13,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+
 @Controller
 @RequestMapping("marketplace")
 public class MarketPlaceController {
 
-    Utility utility = new Utility();
+    static HashMap<String, String> searchChoices = new HashMap<>();
+
+    public MarketPlaceController (){
+        searchChoices.put("all", "All");
+        searchChoices.put("type", "Type");
+        searchChoices.put("location", "Location");
+        searchChoices.put("vendor", "Vendor");
+    }
 
     @Autowired
     private ProductRepository productRepository;
@@ -35,13 +44,14 @@ public class MarketPlaceController {
 
         model.addAttribute("products", products);
         model.addAttribute("vendors", vendors);
+        model.addAttribute("columns", searchChoices);
 
 
         return "marketplace";
     }
 
     @PostMapping("results")
-    public String listProductsByValue(Model model, @RequestParam String value) {
+    public String listProductsByValue(Model model, @RequestParam String searchTerm, @RequestParam String searchType) {
         Iterable<Product> products;
         Iterable<Vendor> vendors;
 
@@ -51,11 +61,12 @@ public class MarketPlaceController {
 
 
 
-        if(value !=null){
+        if(searchTerm == null || searchTerm.toLowerCase().equals("all")){
 
-            products = ProductData.findByValue( value, productRepository.findAll());
+            products = productRepository.findAll();
 
         }
+        products = ProductData.findByValue( searchTerm, productRepository.findAll());
         model.addAttribute("products", products);
 
         return "marketplace";
