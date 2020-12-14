@@ -2,15 +2,17 @@ package org.launchcode.liftoffproject.models;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 
+import java.util.HashMap;
+
 public class Utility {
 
-   public int sizeOf(Iterable<?> item) {
-       int counter = 0;
-       for (Object i : item) {
-           counter++;
-       }
-       return counter;
-   }
+   static HashMap<String, String> searchChoices = new HashMap<>();
 
+   public Utility (){
+       searchChoices.put("all", "All");
+       searchChoices.put("type", "Type");
+       searchChoices.put("location", "Location");
+       searchChoices.put("vendor", "Vendor");
+   }
 
 }
