@@ -54,7 +54,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
-                                          @RequestParam boolean isVendor, Errors errors, HttpServletRequest request,
+                                          Errors errors, HttpServletRequest request,
                                           Model model) {
 
         if (errors.hasErrors()) {
@@ -78,7 +78,7 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.isVendor());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getIsVendor());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 

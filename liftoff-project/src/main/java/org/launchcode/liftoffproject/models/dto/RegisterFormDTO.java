@@ -4,7 +4,7 @@ import javax.persistence.Column;
 
 public class RegisterFormDTO extends LoginFormDTO {
 
-    private boolean isVendor = false;
+    private String isVendor;
 
     private String verifyPassword;
 
@@ -16,7 +16,11 @@ public class RegisterFormDTO extends LoginFormDTO {
         this.verifyPassword = verifyPassword;
     }
 
-    public boolean isVendor() {
+    public String getIsVendor() {
         return isVendor;
+    }
+
+    public void setIsVendor(String isVendor) {
+        this.isVendor = isVendor;
     }
 }
