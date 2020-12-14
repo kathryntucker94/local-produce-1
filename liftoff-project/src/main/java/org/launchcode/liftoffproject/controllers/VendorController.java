@@ -33,6 +33,7 @@ public class VendorController {
         return "vendors/edit";
     }
 
+    //METHOD TO GET USER FROM SESSION
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute("user");
         if (userId == null) {
