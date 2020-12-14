@@ -5,9 +5,15 @@
 </head>
 <body class="container  body-content">
 
+<!-- Nav Bar -->
+<div>
+    <div th:replace="fragments :: navigation"></div>
+</div>
+
 <!-- Title -->
 <h1 th:text="${title}"></h1>
 
+<!-- Form -->
 <form method="post">
     <div class="form-group">
         <label th:for="photo">Profile Photo:</label>
