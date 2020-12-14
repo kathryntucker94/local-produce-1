@@ -63,7 +63,7 @@ public class VendorController {
 
 
 
-        newVendor.setUser(user);
+//        newVendor.setUser(user);
         user.setVendor(newVendor);
         vendorRepository.save(newVendor);
         return "vendors/profile";
