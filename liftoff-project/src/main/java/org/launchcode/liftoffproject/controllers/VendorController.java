@@ -33,6 +33,7 @@ public class VendorController {
         return "vendors/edit";
     }
 
+    //METHOD TO GET USER FROM SESSION
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute("user");
         if (userId == null) {
@@ -56,14 +57,15 @@ public class VendorController {
             return "vendors/edit";
         }
 
+//      Get user from session.
         HttpSession session = request.getSession(false);
-
         User user = getUserFromSession(session);
 
 
-
-//        newVendor.setUser(user);
+//      Set the current user as the "owner" of the vendor.
         user.setVendor(newVendor);
+
+//      Save new vendor.
         vendorRepository.save(newVendor);
         return "vendors/profile";
     }

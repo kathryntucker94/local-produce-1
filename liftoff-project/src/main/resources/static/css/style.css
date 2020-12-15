@@ -79,24 +79,34 @@ padding: 10px;
 }
 
 .aboutustext{
-font-size:18px;
 color: #6e634c;
-padding-bottom: 12px;
-padding-left:100px;
-padding-right: 500px;
-margin: 0px ;
-
 font-family: "Lucida Console", "Courier New", monospace;
 }
 
-#aboutusimg{
+/*padding-bottom: 12px;
+font-size:18px;
+padding-left:100px;
+padding-right: 500px;
+margin: 0px ;
+*/
+
+#aboutusimg {
+    height: 100%;
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+}
+
+.card{
+    background-color: #b1b180;
+}
+/*#aboutusimg{
  max-width:30%;
  max-height:30%;
  padding:20px 70px 50px 20px;
 border-radius: 25px;
 float: right;
 display: block;
-}
+}*/
 
 /*#content-container{
 float: left
