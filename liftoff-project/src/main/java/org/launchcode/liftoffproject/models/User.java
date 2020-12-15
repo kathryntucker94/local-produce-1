@@ -28,13 +28,14 @@ public class User  {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    private String userRole;
+    private String isVendor;
 
     public User() {}
 
-    public User(String username, String password, String userRole) {
+    public User(String username, String password, String isVendor) {
         this.username = username;
         this.pwHash = encoder.encode(password);
+        this.isVendor = isVendor;
     }
 
     public String getUsername() {
@@ -57,11 +58,11 @@ public class User  {
         this.vendor = vendor;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public String getIsVendor() {
+        return isVendor;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setIsVendor(String isVendor) {
+        this.isVendor = isVendor;
     }
 }
