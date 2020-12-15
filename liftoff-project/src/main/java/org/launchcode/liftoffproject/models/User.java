@@ -32,9 +32,10 @@ public class User  {
 
     public User() {}
 
-    public User(String username, String password, String userRole) {
+    public User(String username, String password, String isVendor) {
         this.username = username;
         this.pwHash = encoder.encode(password);
+        this.isVendor = isVendor;
     }
 
     public String getUsername() {
