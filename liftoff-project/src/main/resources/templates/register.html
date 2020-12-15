@@ -31,14 +31,10 @@
                     </label>
                 </div>
                 <!-- ROLE DETERMINATION -->
-                <div class="form-group">
-                    <label for="roleSelect">Are you here to buy or sell?</label>
-                    <select id="roleSelect" th:field="${registerFormDTO.userRole}">
-                        <option value="customer">Buy</option>
-                        <option value="vendor">Sell</option>
-                        <option value="both">Both</option>
-                    </select>
-                </div>
+                < <div class="form-check form-check-inline">
+                <input input class="form-check-input"  id="inlineCheckbox2" type="checkbox" th:field="*{registerFormDTO.isVendor}" th:value="yes" />
+                <label class="form-check-label" for="inlineCheckbox2" >I'm a vendor</label>
+            </div>
                 <!-- END ROLE DETERMINATION -->
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">Register</button>
