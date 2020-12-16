@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Products</title>
+</head>
+<body>
+<h1>Add Product</h1>
+
+<form method="post" style="max-width:600px;" id="addForm">
+    <div>
+        <label th:for="name">Product Name</label>
+        <input th:field="${product.name}" />
+        <span th:errors="${product.name}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="description">Product Description</label>
+        <input th:field="${product.description}" />
+        <span th:errors="${product.description}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="organic">Check box if this item is organic</label>
+        <input th:field="${product.organic}" type="checkbox" name="${product.organic}" id = "Yes" value = "true"/>
+
+    </div>
+
+    <div>
+        <label th:for="photo">Link to photo:</label>
+        <input th:field="${product.photo}" th:value="${product.photo}"/>
+
+        <span th:errors="${product.photo}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="type">Product Type</label>
+        <input th:field="${product.type}" />
+        <span th:errors="${product.type}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Submit" onclick="confirmation()"/>
+
+
+</form>
+
+<script>
+    function confirmation() {
+        confirm("Your item has been added!");
+        document.getElementById("addForm").reset();
+        }
+</script>
+
+
+
+</body>
+</html>
