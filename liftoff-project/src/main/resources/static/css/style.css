@@ -97,7 +97,7 @@ margin: 0px ;
 }
 
 .card{
-    background-color: #b1b180;
+box-shadow: 0 05px 10px 0 rgba(0,0,0,0.24),0 12px 25px 0 rgba(0,0,0,0.19);
 }
 /*#aboutusimg{
  max-width:30%;
