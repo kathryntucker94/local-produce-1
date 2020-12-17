@@ -15,7 +15,7 @@ public class Product extends AbstractEntity {
     private String description;
     private String photo;
 
-    @NotBlank(message = "Please select whether or not product is organic.")
+    //@NotBlank(message = "Please select whether or not product is organic.")
     private boolean organic;
 
     @ManyToOne
@@ -27,6 +27,7 @@ public class Product extends AbstractEntity {
         this.description = description;
         this.photo = photo;
         this.organic = organic;
+
     }
 
     public Product() {}
