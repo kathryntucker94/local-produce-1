@@ -6,7 +6,17 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     private String userRole;
 
+    private String isVendor;
+
     private String verifyPassword;
+
+    private String verifyEmail;
+
+    public String getVerifyEmail() {
+        return verifyEmail;
+    }
+
+    public void setVerifyEmail(String verifyEmail) { this.verifyEmail = verifyEmail; }
 
     public String getVerifyPassword() {
         return verifyPassword;
@@ -22,5 +32,13 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    public String getIsVendor() {
+        return isVendor;
+    }
+
+    public void setIsVendor(String isVendor) {
+        this.isVendor = isVendor;
     }
 }
