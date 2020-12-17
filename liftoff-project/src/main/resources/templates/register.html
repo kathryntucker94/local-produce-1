@@ -4,14 +4,14 @@
     <title th:text = ${title}>Title</title>
 </head>
 
-<body class="container">
+<body class="container bg-light">
 <div id="home">
     <div th:replace="fragments :: navigation"></div>
 </div>
 
-<section class="container-fluid bg">
-    <section class="row justify-content-center">
-        <section class="col-4">
+<section class="container-fluid justify-content-end">
+    <section class="d-flex flex-row-reverse">
+        <section class="col-10 col-lg-5">
             <form method="post" class="form-container">
                 <div class="form-group">
                     <label>Username
@@ -37,10 +37,9 @@
                     </label>
                 </div>
                 <!-- ROLE DETERMINATION -->
-                 <div class="form-check form-check-inline">
-                <input input class="form-check-input"  id="inlineCheckbox2" type="checkbox" th:field="*{registerFormDTO.isVendor}" th:value="yes" />
+                <input class="form-check-input"  id="inlineCheckbox2" type="checkbox" th:field="*{registerFormDTO.isVendor}" th:value="yes" />
                 <label class="form-check-label" for="inlineCheckbox2" >I'm a vendor</label>
-            </div>
+                </div>
                 <!-- END ROLE DETERMINATION -->
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">Register</button>
@@ -48,11 +47,15 @@
                 <p><small>Already have an account? <a th:href="@{login}">Login here.</a></small></p>
             </form>
         </section>
+        <section class="col-10 col-lg-5 justify-content-end">
+            <div class="form-group form-img">
+                <img src="img/logo.png" class="lgn-img bg-light">
+            </div>
+        </section>
     </section>
 </section>
 
-</body>
-
 <!-- Script Source Files -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
 </html>
