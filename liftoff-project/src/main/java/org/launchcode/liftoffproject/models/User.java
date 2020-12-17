@@ -50,7 +50,7 @@ public class User  {
 
     public String getEmail() { return email;}
 
-    public boolean isMatchingPassword(String password) {
+    public Boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
 
