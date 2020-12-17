@@ -20,7 +20,9 @@ public class RegisterFormDTO extends LoginFormDTO {
         return email;
     }
 
-    public void setEmail(String Email) { this.email = Email; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getVerifyPassword() {
         return verifyPassword;
