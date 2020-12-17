@@ -1,10 +1,13 @@
 package org.launchcode.liftoffproject.models.dto;
 
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class RegisterFormDTO extends LoginFormDTO {
+
+
 
 
     private String isVendor;
