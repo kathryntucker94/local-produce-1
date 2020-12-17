@@ -14,13 +14,13 @@ public class RegisterFormDTO extends LoginFormDTO {
     @NotNull
     @NotBlank
     @Email
-    private String Email;
+    private String email;
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
-    public void setVerifyEmail(String verifyEmail) { this.Email = verifyEmail; }
+    public void setEmail(String Email) { this.email = Email; }
 
     public String getVerifyPassword() {
         return verifyPassword;
