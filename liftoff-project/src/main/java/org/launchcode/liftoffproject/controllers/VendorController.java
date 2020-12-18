@@ -61,7 +61,6 @@ public class VendorController {
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
 
-
 //      Set the current user as the "owner" of the vendor.
         user.setVendor(newVendor);
 
@@ -71,34 +70,42 @@ public class VendorController {
     }
 
     @GetMapping("vendor/edit")
-    public String displayEditProfileForm(Model model, Vendor vendor) {
+    public String displayEditProfileForm(Model model, Vendor vendor, HttpServletRequest request) {
         model.addAttribute("title", "Edit Profile");
+
+        HttpSession session = request.getSession(false);
+        User user = getUserFromSession(session);
+        vendor = user.getVendor();
         model.addAttribute("vendor", vendor);
         return "vendors/edit";
     }
 
     @PostMapping("vendor/edit")
-    public String processEditProfileForm(@ModelAttribute Vendor vendor, Errors errors, Model model) {
+    public String processEditProfileForm(@ModelAttribute @Valid Vendor vendor, @RequestParam String name, @RequestParam String photo, @RequestParam String location,
+                                         @RequestParam String email, @RequestParam String website, @RequestParam String bio, Errors errors, Model model, HttpServletRequest request) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Edit Profile");
             return "vendors/edit";
         }
 
+        HttpSession session = request.getSession(false);
+        User user = getUserFromSession(session);
+        vendor = user.getVendor();
+        int id = vendor.getId();
+        vendorRepository.findById(id);
 
-        return "vendors/profile";
-    }
+        vendor.setName(name);
+        vendor.setPhoto(photo);
+        vendor.setLocation(location);
+        vendor.setEmail(email);
+        vendor.setWebsite(website);
+        vendor.setBio(bio);
 
-//    Path to view a vendor's profile by vendor Id.
-    @GetMapping("vendor/profile/{vendorId}")
-    public String displayViewVendor(Model model, @PathVariable int vendorId) {
-
-        Optional vendor = vendorRepository.findById(vendorId);
-        Vendor vendorObject = (Vendor) vendor.get();
-
-        model.addAttribute("vendor", vendorObject);
-
-        return "vendors/profile";
+        vendorRepository.save(vendor);
+        user.setVendor(vendor);
+        userRepository.save(user);
+        return "redirect:/vendor/profile";
     }
 
     @GetMapping("vendor/profile")
