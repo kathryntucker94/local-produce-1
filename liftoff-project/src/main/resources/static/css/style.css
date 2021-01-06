@@ -91,6 +91,7 @@ margin: 0px ;
 */
 
 #aboutusimg {
+    background-color: #b1b180;
     height: 100%;
     width: 100%;
     padding: 0px 10px 10px 10px;
@@ -98,6 +99,7 @@ margin: 0px ;
 
 .card{
 box-shadow: 0 05px 10px 0 rgba(0,0,0,0.24),0 12px 25px 0 rgba(0,0,0,0.19);
+
 }
 /*#aboutusimg{
  max-width:30%;
@@ -216,4 +218,20 @@ border: none;
   background-color: #ccd59a;
   border: none;
 
+}
+
+/* Footer */
+
+footer{
+   background-color: #424558;
+ flex-shrink: 0;
+    height: 35px;
+    text-align: center;
+    color: #CCC;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
 }
