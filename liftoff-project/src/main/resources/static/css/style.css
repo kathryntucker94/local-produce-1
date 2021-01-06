@@ -77,7 +77,8 @@ color: white;
 font-weight: bold, italic;
 padding: 10px;
 }
-.card-body-about{
+
+#about-card{
 background-color: #b1b180;
 overflow: hidden;
 }
@@ -85,7 +86,8 @@ overflow: hidden;
 .aboutustext{
 color: #6e634c;
 font-family: "Lucida Console", "Courier New", monospace;
-background-color: #b1b180;
+text-align: center;
+    background-color: #b1b180;
 }
 
 
@@ -96,9 +98,6 @@ background-color: #b1b180;
     padding: 0px 10px 10px 10px;
 }
 
-
-
-}
 
 /*============= LOGIN PAGE / FORM =============*/
 .bg {
