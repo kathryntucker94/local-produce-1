@@ -1,10 +1,3 @@
-/*============= RESET STYLE =============
-
-/*-- iPhone X Remove Gutters
-Ignore W3C Validation error for this style. --*/
-
-
-
 html {
    padding: env(safe-area-inset);
 }
@@ -50,21 +43,93 @@ body {
 
 /*============= LANDING PAGE =============*/
 .landing{
-    height: 90vh;
+    height: 94vh;
 }
 
 .home-inner{
-    background-image: url("../img/header2.png");
-    background-repeat: no-repeat;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+}
+/*background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../img/background.gif");*/
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
-/*============= ABOUT SECTION =============*/
-#about {
-    height: 20vh;
+
+.img-c {
+    height: 400px;
+    attachment: fixed;
 }
 
-#littleCalendar {
- height:5rem;
+/*============= ABOUT SECTION =============*/
+.about-section {
+    padding: 40px 0 0 0;
+}
+
+#about-container {
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    margin: 0 50px 100px 50px;
+    background-color: #b1b180;
+    overflow: hidden;
+    padding: 0;
+}
+
+.heading{
+color: #6e634c;
+text-align: center;
+font-size:45px;
+color: white;
+font-weight: bold, italic;
+padding: 10px;
+}
+
+.aboutustext{
+font-size:15px;
+color: #6e634c;
+padding-bottom: 12px;
+font-family: "Lucida Console", "Courier New", monospace;
+}
+
+/*padding-bottom: 12px;
+font-size:18px;
+padding-left:100px;
+padding-right: 500px;
+margin: 0px ;
+*/
+
+#aboutusimg {
+    height: 100%;
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+}
+
+#about-card{
+    background-color: #b1b180;
+}
+
+/*============= HOMEPAGE IMAGE CARROUSEL SECTION =============*/
+
+#user-spotlight-container {
+margin: 0px 50px 150px 50px;
+}
+.user-spotlight-header {
+}
+.row {
+}
+.btn-primary {
+background-color: #b1b180;
+border: none;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 05px 10px 0 rgba(0,0,0,0.24),0 12px 25px 0 rgba(0,0,0,0.19);
+  background-color: #ccd59a;
+  border: none;
 }
 
 /*============= LOGIN PAGE / FORM =============*/
@@ -75,28 +140,78 @@ body {
 }
 
 .form-container {
-    position:absolute;
+    position: absolute;
     top: 20vh;
     background: #fff;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #000;
+    line-height: 2.5;
 }
 
+.form-img {
+    position: absolute;
+    top: 20vh;
+    line-height: 2.5;
+}
+
+.lgn-img{
+    height: 300px;
+}
 /*============= VENDOR PROFILE =============*/
-#profile-img {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    padding: 5px;
-    width: 150px;
+#editVendor {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    padding-top: 5rem;
 }
 
+#profileEditBtns {
+    text-align: center;
+}
 
-/*============= CONTACT SECTION =============*/
+.card-block .img-thumbnail {
+    max-width: 90%!important;
+}
+/*============= MARKETPLACE PAGE =============*/
+.mkpTitle {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 15%;
+    color: black;
+}
 
+#marketplace {
+    width: 100%;
+    position: absolute;
+    top: 23%;
+}
 
+.search-field {
+     height: 50px;
+     padding: 10px;
+}
 
-/*============= MEDIA QUERIES =============*/
+.produce {
+    width: 400px;
+}
+
+.location {
+    width: 200px;
+}
+
+.search-btn {
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+#mkp-img{
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+}
 
 /* Medium (md) devices (tablets, 768px and under) */
 @media (max-width: 767.98px) {
@@ -104,22 +219,24 @@ body {
 }
 
 /*============ BOOTSTRAP BREAK POINTS:
+    float: center;
+     padding: 6px;
+     border: none;
+     margin-right: 16px;
+     margin-bottom: 16px;
+     font-size: 17px;
+
 
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
-
 Small (sm) devices (landscape phones, 576px and up)
 @media (min-width: 576px) { ... }
-
 Medium (md) devices (tablets, 768px and up)
 @media (min-width: 768px) { ... }
-
 Large (lg) devices (desktops, 992px and up)
 @media (min-width: 992px) { ... }
-
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
-
 =============*/
 
 /*-- Fixed Landing Page Section --*/
@@ -136,6 +253,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
    left: 0;
    width: 100%;
    height: 100%;
+   padding: 0;
 }
 .home-inner {
    display: table;
@@ -143,7 +261,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
    left: 0;
    width: 100%;
    height: 100%;
-   background-size: 100%;
+   background-size: cover;
    background-position: center center;
    transform: translateZ(0);
    -webkit-transform: translateZ(0);
