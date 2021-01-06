@@ -78,16 +78,15 @@ font-weight: bold, italic;
 padding: 10px;
 }
 
-#about-card{
+.card-body-about{
 background-color: #b1b180;
-overflow: hidden;
+
 }
 
 .aboutustext{
 color: #6e634c;
 font-family: "Lucida Console", "Courier New", monospace;
 text-align: center;
-    background-color: #b1b180;
 }
 
 
@@ -97,7 +96,12 @@ text-align: center;
     width: 100%;
     padding: 0px 10px 10px 10px;
 }
-
+.col-md-8{
+background-color: #b1b180;
+}
+.col-md-4 {
+background-color: #b1b180;
+}
 
 /*============= LOGIN PAGE / FORM =============*/
 .bg {
