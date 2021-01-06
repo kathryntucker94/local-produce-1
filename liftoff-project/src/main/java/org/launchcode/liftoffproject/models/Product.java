@@ -27,7 +27,6 @@ public class Product extends AbstractEntity {
         this.description = description;
         this.photo = photo;
         this.organic = organic;
-
     }
 
     public Product() {}
