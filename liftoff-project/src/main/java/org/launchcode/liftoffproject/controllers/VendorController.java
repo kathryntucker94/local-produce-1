@@ -120,17 +120,13 @@ public class VendorController {
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
 
-        //Get products from the vendor
-
-        Iterable<Product> vendorProducts = user.getVendor().getProducts();
-
-        vendorProducts = productRepository.findByVendor(user.getVendor());
-        model.addAttribute("vendorProducts", vendorProducts);
-
         //get vendor from session user and redirect to their profile
         if (user.getVendor() != null) {
             Vendor vendor = user.getVendor();
             model.addAttribute("vendor", vendor);
+            Iterable<Product> vendorProducts = user.getVendor().getProducts();
+            vendorProducts = productRepository.findByVendor(user.getVendor());
+            model.addAttribute("vendorProducts", vendorProducts);
             return "vendors/profile";
         } else {
             //if user is not linked to a vendor yet, send to create profile and link to session user
