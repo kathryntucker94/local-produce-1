@@ -33,7 +33,13 @@ public class VendorController {
 
 
     @GetMapping("vendor/create")
-    public String displayCreateProfileForm(Model model) {
+    public String displayCreateProfileForm(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            User user = getUserFromSession(session);
+            model.addAttribute("user", user);
+        }
         model.addAttribute("title", "Create Profile");
         model.addAttribute(new Vendor());
         return "vendors/edit";
@@ -66,6 +72,7 @@ public class VendorController {
 //      Get user from session.
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
+        model.addAttribute("user", user);
 
 //      Set the current user as the "owner" of the vendor.
         user.setVendor(newVendor);
@@ -83,6 +90,7 @@ public class VendorController {
         User user = getUserFromSession(session);
         vendor = user.getVendor();
         model.addAttribute("vendor", vendor);
+        model.addAttribute("user", user);
         return "vendors/edit";
     }
 
@@ -97,6 +105,7 @@ public class VendorController {
 
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
+        model.addAttribute("user", user);
         vendor = user.getVendor();
         int id = vendor.getId();
         vendorRepository.findById(id);
@@ -119,6 +128,7 @@ public class VendorController {
         //Get user from session
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
+        model.addAttribute("user", user);
 
         //get vendor from session user and redirect to their profile
         if (user.getVendor() != null) {
