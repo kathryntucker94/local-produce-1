@@ -42,8 +42,10 @@
                     <li class="nav-item">
                         <a th:href="@{/marketplace}" class="nav-link">MarketPlace</a>
                     </li>
-                    <li class="nav-item">
-                        <a th:href="@{vendor/profile}" class="nav-link">Vendor Profile</a>
+                    <li class="nav-item" th:if="${user}">
+                        <span th:if="${user.isVendor == 'yes'}">
+                            <a th:href="@{vendor/profile}" class="nav-link">Vendor Profile</a>
+                        </span>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle btn btn-success btn-xm" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
