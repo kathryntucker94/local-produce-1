@@ -43,7 +43,9 @@ body {
 
 /*============= LANDING PAGE =============*/
 .landing{
+
     height: 94vh;
+
 }
 
 .home-inner{
@@ -66,18 +68,19 @@ body {
 }
 
 /*============= ABOUT SECTION =============*/
-.about-section {
-    padding: 40px 0 0 0;
-}
 
 #about-container {
-    border-radius: 10px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-    margin: 0 50px 100px 50px;
-    background-color: #b1b180;
-    overflow: hidden;
-    padding: 0;
+border-radius: 10px;
+box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+margin: 0 50px 100px 50px;
+ background-color: #b1b180;
+overflow: hidden;
 }
+/* .about-section {
+    padding: 40px 0 0 0;
+} */
+
+
 
 .heading{
 color: #6e634c;
@@ -131,6 +134,33 @@ border: none;
   background-color: #ccd59a;
   border: none;
 }
+
+.card-body-about{
+background-color: #b1b180;
+
+}
+
+.aboutustext{
+color: #6e634c;
+font-family: "Lucida Console", "Courier New", monospace;
+text-align: center;
+}
+
+
+#aboutusimg{
+    background-color: #b1b180;
+    height: 100%;
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+}
+
+.col-md-8{
+background-color: #b1b180;
+}
+.col-md-4 {
+background-color: #b1b180;
+}
+
 
 /*============= LOGIN PAGE / FORM =============*/
 .bg {
@@ -272,4 +302,44 @@ Extra (xl) large devices (large desktops, 1200px and up)
    transform: translateZ(0);
    -webkit-transform: translateZ(0);
    will-change: transform;
+}
+/* image carousel */
+#user-spotlight-container{
+margin: 0px 50px 150px 50px;
+}
+
+.user-spotlight-header{
+
+}
+
+.card-body{
+box-shadow: 0 05px 10px 0 rgba(0,0,0,0.24),0 12px 25px 0 rgba(0,0,0,0.19);
+}
+
+.btn-primary{
+background-color: #b1b180;
+border: none;
+}
+
+.btn-primary:hover{
+  box-shadow: 0 05px 10px 0 rgba(0,0,0,0.24),0 12px 25px 0 rgba(0,0,0,0.19);
+  background-color: #ccd59a;
+  border: none;
+
+}
+
+/* Footer */
+
+footer{
+   background-color: #1c8454;
+    flex-shrink: 0;
+    height: 35px;
+    text-align: center;
+    color: #CCC;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
 }
