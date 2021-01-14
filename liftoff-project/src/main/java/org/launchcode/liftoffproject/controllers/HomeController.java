@@ -49,8 +49,6 @@ public class HomeController {
 
         return user.get();
     }
-
-    //allow users to see their view of a Vendor profile
     @GetMapping("users/profile/{vendorId}")
     public String displayViewVendor(Model model, @PathVariable int vendorId) {
 
@@ -63,5 +61,4 @@ public class HomeController {
             return "redirect:../";
         }
     }
-
 }
