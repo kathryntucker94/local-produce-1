@@ -13,7 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,7 +22,6 @@ import java.util.Optional;
 
 @Controller
 public class ProductController {
-
 
 
     @Autowired
@@ -52,7 +50,6 @@ public class ProductController {
         return user.get();
     }
 
-
     @GetMapping("products/add")
     public String displayAddProductForm(Model model){
         model.addAttribute(new Product());
@@ -62,6 +59,7 @@ public class ProductController {
 
     @PostMapping("products/add")
     public String processAddProductForm(@ModelAttribute @Valid Product newProduct, Errors errors, Model model, HttpServletRequest request) {
+
         if (errors.hasErrors()) {
             return "products/add";
         }
@@ -71,11 +69,11 @@ public class ProductController {
         User user = getUserFromSession(session);
 
         //Set the current users as the "owner" of the product.
-        Vendor currentVendor = user.getVendor();
-        newProduct.setVendor(currentVendor);
-
+        Vendor vendor = user.getVendor();
+        model.addAttribute("vendor", vendor);
+        newProduct.setVendor(vendor);
         productRepository.save(newProduct);
 
-        return "products/add";
+        return "redirect:/vendor/profile";
     }
 }
