@@ -24,24 +24,33 @@ public class User  {
     private String username;
 
     @NotNull
+    @Email
+    private String email;
+
+    @NotNull
     private String pwHash;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    private String userRole;
+    private String isVendor;
 
     public User() {}
 
-    public User(String username, String password, String userRole) {
+    public User(String username,String email, String password, String isVendor) {
+
         this.username = username;
+        this.email = email;
         this.pwHash = encoder.encode(password);
+        this.isVendor = isVendor;
     }
 
     public String getUsername() {
             return username;
         }
 
-    public boolean isMatchingPassword(String password) {
+    public String getEmail() { return email;}
+
+    public Boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
 
@@ -57,11 +66,11 @@ public class User  {
         this.vendor = vendor;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public String getIsVendor() {
+        return isVendor;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setIsVendor(String isVendor) {
+        this.isVendor = isVendor;
     }
 }

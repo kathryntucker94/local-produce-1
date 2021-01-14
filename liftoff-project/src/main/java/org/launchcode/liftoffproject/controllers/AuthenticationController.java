@@ -69,6 +69,13 @@ public class AuthenticationController {
             return "register";
         }
 
+        User existingEmail = userRepository.findByEmail(registerFormDTO.getEmail());
+        if (existingEmail != null) {
+            errors.rejectValue("email", "email.alreadyexists", "A user with that e-mail already exists");
+            model.addAttribute("title", "Register");
+            return "register";
+        }
+
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
@@ -77,11 +84,13 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getUserRole());
+
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getEmail(), registerFormDTO.getPassword(), registerFormDTO.getIsVendor());
+
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
+        return "redirect:/login";
     }
     @GetMapping("/login")
     public String displayLoginForm(Model model) {

@@ -1,7 +1,9 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.models.Product;
 import org.launchcode.liftoffproject.models.User;
 import org.launchcode.liftoffproject.models.Vendor;
+import org.launchcode.liftoffproject.models.data.ProductRepository;
 import org.launchcode.liftoffproject.models.data.UserRepository;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -25,6 +27,10 @@ public class VendorController {
 
     @Autowired
     private VendorRepository vendorRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @GetMapping("vendor/create")
     public String displayCreateProfileForm(Model model) {
@@ -61,7 +67,6 @@ public class VendorController {
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
 
-
 //      Set the current user as the "owner" of the vendor.
         user.setVendor(newVendor);
 
@@ -71,39 +76,46 @@ public class VendorController {
     }
 
     @GetMapping("vendor/edit")
-    public String displayEditProfileForm(Model model, Vendor vendor) {
+    public String displayEditProfileForm(Model model, Vendor vendor, HttpServletRequest request) {
         model.addAttribute("title", "Edit Profile");
+
+        HttpSession session = request.getSession(false);
+        User user = getUserFromSession(session);
+        vendor = user.getVendor();
         model.addAttribute("vendor", vendor);
         return "vendors/edit";
     }
 
     @PostMapping("vendor/edit")
-    public String processEditProfileForm(@ModelAttribute Vendor vendor, Errors errors, Model model) {
+    public String processEditProfileForm(@ModelAttribute @Valid Vendor vendor, @RequestParam String name, @RequestParam String photo, @RequestParam String location,
+                                         @RequestParam String email, @RequestParam String website, @RequestParam String bio, Errors errors, Model model, HttpServletRequest request) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Edit Profile");
             return "vendors/edit";
         }
 
+        HttpSession session = request.getSession(false);
+        User user = getUserFromSession(session);
+        vendor = user.getVendor();
+        int id = vendor.getId();
+        vendorRepository.findById(id);
 
-        return "vendors/profile";
-    }
+        vendor.setName(name);
+        vendor.setPhoto(photo);
+        vendor.setLocation(location);
+        vendor.setEmail(email);
+        vendor.setWebsite(website);
+        vendor.setBio(bio);
 
-//    Path to view a vendor's profile by vendor Id.
-    @GetMapping("vendor/profile/{vendorId}")
-    public String displayViewVendor(Model model, @PathVariable int vendorId) {
-
-        Optional vendor = vendorRepository.findById(vendorId);
-        Vendor vendorObject = (Vendor) vendor.get();
-
-        model.addAttribute("vendor", vendorObject);
-
-        return "vendors/profile";
+        vendorRepository.save(vendor);
+        user.setVendor(vendor);
+        userRepository.save(user);
+        return "redirect:/vendor/profile";
     }
 
     @GetMapping("vendor/profile")
     public String displayMyVendorProfile(Model model, HttpServletRequest request) {
-
         //Get user from session
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
@@ -112,6 +124,9 @@ public class VendorController {
         if (user.getVendor() != null) {
             Vendor vendor = user.getVendor();
             model.addAttribute("vendor", vendor);
+            Iterable<Product> vendorProducts = user.getVendor().getProducts();
+            vendorProducts = productRepository.findByVendor(user.getVendor());
+            model.addAttribute("vendorProducts", vendorProducts);
             return "vendors/profile";
         } else {
             //if user is not linked to a vendor yet, send to create profile and link to session user
@@ -119,7 +134,6 @@ public class VendorController {
             model.addAttribute(new Vendor());
             return "redirect:/vendor/create";
         }
-
 
     }
 
