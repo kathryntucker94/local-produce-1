@@ -48,7 +48,7 @@ public class MarketPlaceController {
         return "marketplace";
     }
 
-//    @PostMapping("profile/{vendorId}")
+//    @PostMapping("users/profile/{vendorId}")
 //    public String displayVendorProfile(Model model, @PathVariable int vendorId) {
 //
 //    }

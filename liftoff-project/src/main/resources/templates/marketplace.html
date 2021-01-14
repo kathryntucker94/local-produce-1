@@ -10,11 +10,12 @@
 
 <div class="container body-content">
     <div class="mkpTitle">
-        <h3>LOCAL PRODUCE MARKETPLACE</h3>
+        <h3><bold>LOCAL PRODUCE MARKETPLACE</bold></h3>
         <p>Welcome to our marketplace! Buy fruits, vegetables, and more from local producers near your home!</p>
         <br>
 
-        <h5>SEE ALL PRODUCTS</h5>
+        <h4>SEE ALL PRODUCTS</h4>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-4 col-md-3 col-lg-2" th:each="product : ${products}">
@@ -22,7 +23,7 @@
                         <img th:src="@{|${product.photo}|}" th:value="@{product.photo}" class="card-img-top mkp-img">
                         <div class="card-body">
                             <h5 th:text="${product.name}">PRODUCT</h5>
-                            <a th:href="@{'profile/vendorId' + ${vendorId}}" th:text="${product.vendor.name}"></a>
+                            <a th:href="@{'users/profile/' + ${product.vendor.id}}" th:text="${product.vendor.name}"></a>
                         </div>
                     </div>
                     <br>
@@ -30,9 +31,9 @@
             </div>
         </div>
         <br>
-        <br>
 
-        <h5>SEE ALL VENDORS</h5>
+        <h4>SEE ALL VENDORS</h4>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-4 col-md-3 col-lg-2" th:each="vendor : ${vendors}">

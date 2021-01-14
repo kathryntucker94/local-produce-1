@@ -32,6 +32,7 @@ public class VendorController {
     @Autowired
     private ProductRepository productRepository;
 
+
     @GetMapping("vendor/create")
     public String displayCreateProfileForm(Model model) {
         model.addAttribute("title", "Create Profile");

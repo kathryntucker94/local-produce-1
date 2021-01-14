@@ -174,10 +174,14 @@ border: none;
     max-width: 90%!important;
 }
 /*============= MARKETPLACE PAGE =============*/
+.container{
+    line-height: 2;
+}
+
 .mkpTitle {
     position: absolute;
     text-align: center;
-    top: 200 px;
+    top: 18vh!important;
 }
 
 .search-field {
@@ -199,10 +203,11 @@ border: none;
     height: 50px;
 }
 
-#mkp-img{
-    height: 200px;
-    width: 100%;
-    padding: 10px;
+.mkp-img{
+    height: 175px!important;
+    width: 100%!important;
+    padding: 5px!important;
+
 }
 
 /* Medium (md) devices (tablets, 768px and under) */

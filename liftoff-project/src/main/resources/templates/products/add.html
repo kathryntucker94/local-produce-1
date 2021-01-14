@@ -1,48 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Products</title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
 </head>
-<body>
-<h1>Add Product</h1>
 
-<form method="post" style="max-width:600px;" id="addForm">
-    <div>
-        <label th:for="name">Product Name</label>
-        <input th:field="${product.name}" />
-        <span th:errors="${product.name}" class="error"></span>
+<body class="container bg-light">
+<div>
+    <div th:replace="fragments :: navigation"></div>
+</div>
+
+<div class="container-fluid" id="editVendor">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 mt-5 pt-5">
+            <div class="row z-depth-3">
+                <section class="row justify-content-center">
+                    <h4>Add a product</h4>
+                    <br>
+                    <form method="post" class="card-block" id="addForm">
+                        <div class="mb-3">
+                            <label th:for="name">Product Name</label>
+                            <input th:field="${product.name}" />
+                            <span th:errors="${product.name}" class="error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label th:for="description">Product Description</label>
+                            <input th:field="${product.description}" />
+                            <span th:errors="${product.description}" class="error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label th:for="organic">Check box if this item is organic</label>
+                            <input th:field="${product.organic}" type="checkbox" name="${product.organic}" id = "Yes" value = "true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label th:for="photo">Link to photo:</label>
+                            <input th:field="${product.photo}" th:value="${product.photo}"/>
+
+                            <span th:errors="${product.photo}" class="error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label th:for="type">Product Type</label>
+                            <input th:field="${product.type}" />
+                            <span th:errors="${product.type}" class="error"></span>
+                        </div>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </section>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <label th:for="description">Product Description</label>
-        <input th:field="${product.description}" />
-        <span th:errors="${product.description}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="organic">Check box if this item is organic</label>
-        <input th:field="${product.organic}" type="checkbox" name="${product.organic}" id = "Yes" value = "true"/>
-
-    </div>
-
-    <div>
-        <label th:for="photo">Link to photo:</label>
-        <input th:field="${product.photo}" th:value="${product.photo}"/>
-
-        <span th:errors="${product.photo}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="type">Product Type</label>
-        <input th:field="${product.type}" />
-        <span th:errors="${product.type}" class="error"></span>
-    </div>
-
-    <input type="submit" value="Submit"/>
-
-
-</form>
+</div>
+</body>
+</html>
 
 <!--<script>-->
 <!--    function confirmation() {-->
@@ -51,10 +58,6 @@
 <!--        }-->
 <!--</script>-->
 
-
-
-</body>
-</html>
 
 <!--<!DOCTYPE html>-->
 <!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
