@@ -1,19 +1,17 @@
 package org.launchcode.liftoffproject.controllers;
 
-import org.launchcode.liftoffproject.models.Product;
-import org.launchcode.liftoffproject.models.ProductData;
-import org.launchcode.liftoffproject.models.Utility;
-import org.launchcode.liftoffproject.models.Vendor;
+import org.launchcode.liftoffproject.models.*;
 import org.launchcode.liftoffproject.models.data.ProductRepository;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("marketplace")
@@ -49,6 +47,11 @@ public class MarketPlaceController {
 
         return "marketplace";
     }
+
+//    @PostMapping("users/profile/{vendorId}")
+//    public String displayVendorProfile(Model model, @PathVariable int vendorId) {
+//
+//    }
 
     @PostMapping("results")
     public String listProductsByValue(Model model, @RequestParam String searchTerm, @RequestParam String searchType) {

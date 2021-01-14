@@ -1,7 +1,9 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.models.Product;
 import org.launchcode.liftoffproject.models.User;
 import org.launchcode.liftoffproject.models.Vendor;
+import org.launchcode.liftoffproject.models.data.ProductRepository;
 import org.launchcode.liftoffproject.models.data.UserRepository;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -24,6 +27,10 @@ public class VendorController {
 
     @Autowired
     private VendorRepository vendorRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @GetMapping("vendor/create")
     public String displayCreateProfileForm(Model model) {
@@ -109,7 +116,6 @@ public class VendorController {
 
     @GetMapping("vendor/profile")
     public String displayMyVendorProfile(Model model, HttpServletRequest request) {
-
         //Get user from session
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
@@ -118,6 +124,9 @@ public class VendorController {
         if (user.getVendor() != null) {
             Vendor vendor = user.getVendor();
             model.addAttribute("vendor", vendor);
+            Iterable<Product> vendorProducts = user.getVendor().getProducts();
+            vendorProducts = productRepository.findByVendor(user.getVendor());
+            model.addAttribute("vendorProducts", vendorProducts);
             return "vendors/profile";
         } else {
             //if user is not linked to a vendor yet, send to create profile and link to session user
@@ -125,7 +134,6 @@ public class VendorController {
             model.addAttribute(new Vendor());
             return "redirect:/vendor/create";
         }
-
 
     }
 

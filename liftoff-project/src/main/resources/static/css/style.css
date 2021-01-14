@@ -174,18 +174,14 @@ border: none;
     max-width: 90%!important;
 }
 /*============= MARKETPLACE PAGE =============*/
-.mkpTitle {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    top: 15%;
-    color: black;
+.container{
+    line-height: 2;
 }
 
-#marketplace {
-    width: 100%;
+.mkpTitle {
     position: absolute;
-    top: 23%;
+    text-align: center;
+    top: 18vh!important;
 }
 
 .search-field {
@@ -207,15 +203,25 @@ border: none;
     height: 50px;
 }
 
-#mkp-img{
-    height: 200px;
-    width: 100%;
-    padding: 10px;
+.mkp-img{
+    height: 175px!important;
+    width: 100%!important;
+    padding: 5px!important;
+
 }
 
 /* Medium (md) devices (tablets, 768px and under) */
 @media (max-width: 767.98px) {
 
+}
+
+
+*====================*
+#addProducts {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    padding-top: 5rem;
 }
 
 /*============ BOOTSTRAP BREAK POINTS:
