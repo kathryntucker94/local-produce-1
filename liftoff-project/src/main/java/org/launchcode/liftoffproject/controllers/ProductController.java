@@ -13,7 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -74,8 +73,9 @@ public class ProductController {
         Vendor currentVendor = user.getVendor();
         newProduct.setVendor(currentVendor);
 
+        model.addAttribute("vendor", currentVendor);
         productRepository.save(newProduct);
 
-        return "products/add";
+        return "redirect:/vendor/profile";
     }
 }
