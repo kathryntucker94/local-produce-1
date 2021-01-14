@@ -51,8 +51,15 @@ public class ProductController {
     }
 
     @GetMapping("products/add")
-    public String displayAddProductForm(Model model){
+    public String displayAddProductForm(Model model, HttpServletRequest request){
         model.addAttribute(new Product());
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            User user = getUserFromSession(session);
+            model.addAttribute("user", user);
+        }
+
         return "products/add";
 
     }
@@ -67,6 +74,7 @@ public class ProductController {
         // Get user from session.
         HttpSession session = request.getSession(false);
         User user = getUserFromSession(session);
+        model.addAttribute("user", user);
 
         //Set the current users as the "owner" of the product.
         Vendor vendor = user.getVendor();
