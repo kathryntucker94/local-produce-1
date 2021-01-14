@@ -13,6 +13,29 @@
         <h3><bold>LOCAL PRODUCE MARKETPLACE</bold></h3>
         <p>Welcome to our marketplace! Buy fruits, vegetables, and more from local producers near your home!</p>
         <br>
+        <!--Search Bar-->
+        <div style = "position:relative; top: 80px;">
+            <form th:action="@{/marketplace/results}" method = "post">
+                <h2>Filter by:</h2>
+                <p>
+            <span th:each="column : ${columns}">
+                <input
+                        type="radio"
+                        name="searchType"
+                        th:id="${column.key}"
+                        th:value="${column.key}"
+                        th:checked="${column.key == 'all'}"/>
+                <label th:for="${column.key}" th:text="${column.value}"></label>
+            </span>
+
+                </p>
+                <p>
+                    <label for="value">Keyword:</label>
+                    <input type="text" name="searchTerm" id="value" />
+                </p>
+
+                <input type="submit" value="Search" />
+            </form>
 
         <h4>SEE ALL PRODUCTS</h4>
         <br>

@@ -17,6 +17,8 @@ public class Product extends AbstractEntity {
 
     @Size(max = 500, message = "Product description must not exceed 500 characters.")
     private String description;
+
+    @Size(max = 200000)
     private String photo;
 
     //@NotBlank(message = "Please select whether or not product is organic.")
