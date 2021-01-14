@@ -24,7 +24,6 @@ import java.util.Optional;
 public class ProductController {
 
 
-
     @Autowired
     private ProductRepository productRepository;
 
@@ -51,7 +50,6 @@ public class ProductController {
         return user.get();
     }
 
-
     @GetMapping("products/add")
     public String displayAddProductForm(Model model){
         model.addAttribute(new Product());
@@ -61,6 +59,7 @@ public class ProductController {
 
     @PostMapping("products/add")
     public String processAddProductForm(@ModelAttribute @Valid Product newProduct, Errors errors, Model model, HttpServletRequest request) {
+
         if (errors.hasErrors()) {
             return "products/add";
         }
@@ -70,10 +69,9 @@ public class ProductController {
         User user = getUserFromSession(session);
 
         //Set the current users as the "owner" of the product.
-        Vendor currentVendor = user.getVendor();
-        newProduct.setVendor(currentVendor);
-
-        model.addAttribute("vendor", currentVendor);
+        Vendor vendor = user.getVendor();
+        model.addAttribute("vendor", vendor);
+        newProduct.setVendor(vendor);
         productRepository.save(newProduct);
 
         return "redirect:/vendor/profile";

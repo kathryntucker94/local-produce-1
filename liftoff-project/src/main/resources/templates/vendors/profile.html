@@ -59,32 +59,18 @@
         </div>
     </div>
 </div>
+<br>
+<br>
 <div class="container vendor-products">
     <div class="container">
         <h4 class="heading">Products</h4>
         <div class="container">
             <div class="row">
-                <div class="col-10 col-md-3 col-lg-2">
+                <div class="col-4 col-md-3 col-lg-2" th:each="product : ${vendorProducts}">
                     <div class="card mb-4">
-                        <img src="../img/carrots.jpg" alt="default photo" class="card-img-top mkp-img">
+                        <img th:src="@{|${product.photo}|}" th:value="@{product.photo}" class="card-img-top mkp-img">
                         <div class="card-body">
-                            <h5>CARROTS</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10 col-md-3 col-lg-2">
-                    <div class="card mb-4">
-                        <img src="../img/cucumber.jpg" alt="default photo" class="card-img-top mkp-img">
-                        <div class="card-body">
-                            <h5>CUCUMBER</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-10 col-md-3 col-lg-2">
-                    <div class="card mb-4">
-                        <img src="../img/eggplants.jpg" alt="default photo" class="card-img-top mkp-img">
-                        <div class="card-body">
-                            <h5>EGGPLANTS</h5>
+                            <h5 th:text="${product.name}">PRODUCT</h5>
                         </div>
                     </div>
                 </div>
