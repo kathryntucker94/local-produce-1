@@ -48,12 +48,6 @@ public class HomeController {
     public String index(Model model, HttpServletRequest request){
         model.addAttribute("title", "Local Produce");
 
-        //if there is a session
-            //get the user from it
-            //add user to model
-        //if there is not a session
-            //add title and run as normal until there is a session
-
         HttpSession session = request.getSession(false);
 
         if (session != null) {

@@ -2,6 +2,7 @@ package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.models.*;
 import org.launchcode.liftoffproject.models.data.ProductRepository;
+import org.launchcode.liftoffproject.models.data.UserRepository;
 import org.launchcode.liftoffproject.models.data.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,10 +31,36 @@ public class MarketPlaceController {
     private ProductRepository productRepository;
     @Autowired
     private VendorRepository vendorRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    //METHOD TO GET USER FROM SESSION
+    public User getUserFromSession(HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("user");
+        if (userId == null) {
+            return null;
+        }
+
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isEmpty()) {
+            return null;
+        }
+
+        return user.get();
+    }
 
 
     @RequestMapping("")
-    public String list(Model model) {
+    public String list(Model model, HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            User user = getUserFromSession(session);
+            model.addAttribute("user", user);
+        }
+
         Iterable<Product> products;
         Iterable<Vendor> vendors;
 
